@@ -20,6 +20,7 @@ var/list/ai_verbs_default = list(
 	/mob/living/silicon/ai/proc/toggle_acceleration,
 	/mob/living/silicon/ai/proc/toggle_camera_light,
 	/mob/living/silicon/ai/proc/botcall,
+	/mob/living/silicon/ai/proc/robotcall,
 	/mob/living/silicon/ai/proc/change_arrival_message
 )
 
@@ -807,6 +808,15 @@ var/list/ai_verbs_default = list(
 		return
 
 	Bot.call_bot(src, waypoint)
+
+/mob/living/silicon/ai/proc/robotcall()
+	set category = "AI Commands"
+	set name = "Give Cyborg Move Order"
+	set desc = "Order a cyborg to move to a location."
+	if(stat == 2)
+		to_chat(src, "<span class='danger'>Critical error. System offline.</span>")
+		return
+
 
 /mob/living/silicon/ai/proc/switchCamera(obj/machinery/camera/C)
 
